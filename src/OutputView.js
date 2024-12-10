@@ -53,7 +53,16 @@ export const OutputView = {
 
   },
 
-  printResult() {},
+  printResult(gameReuslt, tryCount) {
+    
+    Console.print(`${MESSAGES_OUTPUT["GAME_SUCCESS_FAILED"]}${gameReuslt}`);
+    Console.print(`${MESSAGES_OUTPUT["GAME_TRY_COUND"]}${tryCount}`);
+
+  },
+
+  printResultMap(){
+    Console.print(`${MESSAGES_OUTPUT["GAME_END"]}`)
+  },
 
   printGameStart() {
     Console.print(MESSAGES_OUTPUT["GAME_START"]);

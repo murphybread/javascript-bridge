@@ -9,11 +9,14 @@ export class BridgeGame {
 
   constructor (bridge) {
     this.currentBridge = bridge;
+    this.tryCount = 1;
+    this.round = 0;
+    this.currentMoveKey = "";
 
   }
-  move(round,moveKey) {
-    if (this.currentBridge[USER_KEY[moveKey]][round]){
-        return true  
+  move(moveKey) {
+    if (this.currentBridge[USER_KEY[moveKey]][this.round]){
+      return true  
     }
     else {
       return false
@@ -21,17 +24,48 @@ export class BridgeGame {
 
   }
 
-  retry(answerGameCommand) {
-
-
-
-    throw new Error
-
+  retry(answerGameCommand, bridge ) {
+    if (answerGameCommand.toUpperCase() === "R"){
+      this.currentBridge = bridge;
+      this.tryCount += 1;
+      this.round = 0 ;
+    }
+    else{
+      return this.tryCount;
+    }
 
   }
 
+  updateMove (moveKey){
+    this.currentMoveKey = moveKey;
+
+  }
   getCurrentBridge (){ 
     return this.currentBridge;
+  }
+  getCurrentRound (){
+    return this.round;
+  }
+
+  getTryCount (){
+    return this.tryCount
+  }
+
+  getCurrentMoveKey (){
+    return this.currentMoveKey
+  }
+  updateRound (){
+    this.round +=1;
+  }
+
+  gameResult(bridgeSize){
+    if(Number(bridgeSize) === this.round){
+      return "성공"
+    }
+    else {
+      return "실패"
+    }
+
   }
 }
 
