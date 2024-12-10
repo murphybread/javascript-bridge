@@ -38,16 +38,11 @@ export const InputView = {
     while (true ){
       try{
         const retry = await Console.readLineAsync(MESSAGES_INPUT["GAME_RETRY"])
-
-        if (retry === "R"){
-          return true
-        } else {
-          return true
-        }
-
+        Validator.checkReadGameCommand(retry)
+        return retry.toUpperCase();
       }
       catch (error) {
-        Console.print(MESSAGES_ERROR["BRIDGE_SIZE_FORMAT"])
+        Console.print(MESSAGES_ERROR["RETRY_KEYWORDS"])
       }
     }
 

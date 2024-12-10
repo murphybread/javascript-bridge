@@ -25,8 +25,8 @@ class App {
 
       if (!gameBridge.move(round,moveKey)){
         OutputView.printMap(gameBridge.getCurrentBridge(),round,moveKey, gameBridge.move(round,moveKey))
-        InputView.readGameCommand();
-        gameBridge.retry();
+        const answerGameCommand = await InputView.readGameCommand();
+        gameBridge.retry(answerGameCommand);
       }
       OutputView.printMap(gameBridge.getCurrentBridge(),round,moveKey, gameBridge.move(round,moveKey))
       round +=1;

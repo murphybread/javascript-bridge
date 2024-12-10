@@ -21,7 +21,10 @@ export class BridgeGame {
 
   }
 
-  retry() {
+  retry(answerGameCommand) {
+
+
+
     throw new Error
 
 

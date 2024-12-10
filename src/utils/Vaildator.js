@@ -16,6 +16,13 @@ export class Validator {
     if (!moveKeywords.includes(moveKey.toUpperCase()) ){
       throw new Error
     }
+  }
 
+  static checkReadGameCommand (answerGameCommand){
+    const gameCommandKeywords=  ['R','Q'];
+    if (!gameCommandKeywords.includes(answerGameCommand.toUpperCase()) ){
+      throw new Error
+    }
+     
   }
 }
