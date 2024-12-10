@@ -1,5 +1,5 @@
-import missionUtils from "@woowacourse/mission-utils";
-const { Console } = missionUtils;
+import { Console} from "@woowacourse/mission-utils";
+
 import { MESSAGES_OUTPUT } from "./constant/view.js";
 
 export const OutputView = {

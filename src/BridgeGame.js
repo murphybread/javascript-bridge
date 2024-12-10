@@ -1,5 +1,5 @@
 class BridgeGame {
-          move() {}
+  move() {}
 
   retry() {}
 }
