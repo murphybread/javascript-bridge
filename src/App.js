@@ -1,9 +1,8 @@
-const InputView = require('./InputView');
+
 
 class App {
   play() {
-    InputView.readGameStart();
-    InputView.readBridgeSize();
+
   }
 }
 
