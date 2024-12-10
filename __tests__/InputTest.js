@@ -1,17 +1,17 @@
-const MissionUtils = require('@woowacourse/mission-utils');
-const App = require('../src/App');
+import { Console } from '@woowacourse/mission-utils';
+import App from '../src/App.js';
 
 const mockQuestions = (answers) => {
-  MissionUtils.Console.readLine = jest.fn();
+  Console.readLine = jest.fn();
   answers.reduce((acc, input) => {
     return acc.mockImplementationOnce((_, callback) => {
       callback(input);
     });
-  }, MissionUtils.Console.readLine);
+  }, Console.readLine);
 };
 
 const getLogSpy = () => {
-  const logSpy = jest.spyOn(MissionUtils.Console, 'print');
+  const logSpy = jest.spyOn(Console, 'print');
   logSpy.mockClear();
   return logSpy;
 };

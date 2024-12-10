@@ -35,7 +35,31 @@ export const InputView = {
 
   },
 
-  readMoving() {},
+  async readMoving() {
 
-  readGameCommand() {},
+    while (true ){
+      try{
+        const moveKey = await Console.readLineAsync(MESSAGES_INPUT["GAME_MOVE"])
+        // Validator.brdigeFormat(bridgeSize)
+        return moveKey;
+      }
+      catch (error) {
+        Console.print(MESSAGES_ERROR["BRIDGE_SIZE_FORMAT"])
+      }
+    }
+
+  },
+
+  async readGameCommand() {
+    while (true ){
+      try{
+        const retry = await Console.readLineAsync(MESSAGES_INPUT["GAME_RETRY"])
+        return true
+      }
+      catch (error) {
+        Console.print(MESSAGES_ERROR["BRIDGE_SIZE_FORMAT"])
+      }
+    }
+
+  },
 };

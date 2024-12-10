@@ -1,25 +1,25 @@
-const MissionUtils = require("@woowacourse/mission-utils");
-const App = require("../src/App");
-const BridgeMaker = require("../src/BridgeMaker");
+import { Console, Random } from "@woowacourse/mission-utils";
+import App from "../src/App.js";
+import BridgeMaker from "../src/BridgeMaker.js";
 
 const mockQuestions = (answers) => {
-  MissionUtils.Console.readLine = jest.fn();
+  Console.readLine = jest.fn();
   answers.reduce((acc, input) => {
     return acc.mockImplementationOnce((_, callback) => {
       callback(input);
     });
-  }, MissionUtils.Console.readLine);
+  }, Console.readLine);
 };
 
 const mockRandoms = (numbers) => {
-  MissionUtils.Random.pickNumberInRange = jest.fn();
+  Random.pickNumberInRange = jest.fn();
   numbers.reduce((acc, number) => {
     return acc.mockReturnValueOnce(number);
-  }, MissionUtils.Random.pickNumberInRange);
+  }, Random.pickNumberInRange);
 };
 
 const getLogSpy = () => {
-  const logSpy = jest.spyOn(MissionUtils.Console, "print");
+  const logSpy = jest.spyOn(Console, "print");
   logSpy.mockClear();
   return logSpy;
 };
