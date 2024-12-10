@@ -1,5 +1,5 @@
 import { InputView } from "./InputView.js";
-
+import {Validator} from "./utils/Vaildator.js"
 const USER_KEY = {
   U : 0,
   D : 1

@@ -1,20 +1,9 @@
 import { MESSAGES_INPUT } from "./constant/view.js";
 import { MESSAGES_ERROR } from "./constant/error.js";
 import { Console } from "@woowacourse/mission-utils";
+import { Validator} from "./utils/Vaildator.js"
 
 
-class Validator {
-
-  static brdigeFormat (bridgeSize){
-    if (isNaN(bridgeSize)){
-      throw new Error
-    }
-
-    if (bridgeSize <3 || bridgeSize >21){
-      throw new Error
-    }
-  }
-}
 
 export const InputView = {
   async readBridgeSize() {
@@ -29,10 +18,6 @@ export const InputView = {
         Console.print(MESSAGES_ERROR["BRIDGE_SIZE_FORMAT"])
       }
     }
-
-
-
-
   },
 
   async readMoving() {
@@ -40,21 +25,26 @@ export const InputView = {
     while (true ){
       try{
         const moveKey = await Console.readLineAsync(MESSAGES_INPUT["GAME_MOVE"])
-        // Validator.brdigeFormat(bridgeSize)
-        return moveKey;
+        Validator.checkMoveKeyword(moveKey)
+        return moveKey.toUpperCase();
       }
       catch (error) {
-        Console.print(MESSAGES_ERROR["BRIDGE_SIZE_FORMAT"])
-      }
+        Console.print(MESSAGES_ERROR["MOVE_KEYWORDS"])
     }
-
+    }
   },
 
   async readGameCommand() {
     while (true ){
       try{
         const retry = await Console.readLineAsync(MESSAGES_INPUT["GAME_RETRY"])
-        return true
+
+        if (retry === "R"){
+          return true
+        } else {
+          return true
+        }
+
       }
       catch (error) {
         Console.print(MESSAGES_ERROR["BRIDGE_SIZE_FORMAT"])
