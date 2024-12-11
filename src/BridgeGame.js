@@ -1,71 +1,59 @@
-import { InputView } from "./InputView.js";
-import {Validator} from "./utils/Vaildator.js"
 const USER_KEY = {
-  U : 0,
-  D : 1
-}
+  U: 0,
+  D: 1,
+};
 
 export class BridgeGame {
-
-  constructor (bridge) {
+  constructor(bridge) {
     this.currentBridge = bridge;
     this.tryCount = 1;
     this.round = 0;
-    this.currentMoveKey = "";
-
+    this.currentMoveKey = '';
   }
   move(moveKey) {
-    if (this.currentBridge[USER_KEY[moveKey]][this.round]){
-      return true  
+    if (this.currentBridge[USER_KEY[moveKey]][this.round]) {
+      return true;
+    } else {
+      return false;
     }
-    else {
-      return false
-    }
-
   }
 
-  retry(answerGameCommand, bridge ) {
-    if (answerGameCommand.toUpperCase() === "R"){
+  retry(answerGameCommand, bridge) {
+    if (answerGameCommand.toUpperCase() === 'R') {
       this.currentBridge = bridge;
       this.tryCount += 1;
-      this.round = 0 ;
-    }
-    else{
+      this.round = 0;
+    } else {
       return this.tryCount;
     }
-
   }
 
-  updateMove (moveKey){
+  updateMove(moveKey) {
     this.currentMoveKey = moveKey;
-
   }
-  getCurrentBridge (){ 
+  getCurrentBridge() {
     return this.currentBridge;
   }
-  getCurrentRound (){
+  getCurrentRound() {
     return this.round;
   }
 
-  getTryCount (){
-    return this.tryCount
+  getTryCount() {
+    return this.tryCount;
   }
 
-  getCurrentMoveKey (){
-    return this.currentMoveKey
+  getCurrentMoveKey() {
+    return this.currentMoveKey;
   }
-  updateRound (){
-    this.round +=1;
+  updateRound() {
+    this.round += 1;
   }
 
-  gameResult(bridgeSize){
-    if(Number(bridgeSize) === this.round){
-      return "성공"
+  gameResult(bridgeSize) {
+    if (Number(bridgeSize) === this.round) {
+      return '성공';
+    } else {
+      return '실패';
     }
-    else {
-      return "실패"
-    }
-
   }
 }
-
